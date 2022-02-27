@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :books
   namespace :buyers do
     get 'dashboard/index'
   end
