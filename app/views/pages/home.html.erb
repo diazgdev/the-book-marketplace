@@ -1,21 +1,27 @@
-<h1>This is the homepage :)</h1>
+<div class="hero">
+  <h1>What Book Are You Looking For?</h1>
+</div>
 
-<%= form_tag books_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a book"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+<div class="container trending-books my-5 py-4 rounded-3 ">
+  <h2>Top Trending Books</h2>
+</div>
 
-<% @books.each do |book| %>
-  <div>
-  <p>Title: <%= book.title %> </p>
-  <p>Description: <%= book.description %> </p>
-  <p>Price: $<%= book.price %> </p>
-  <p>Author: <%= book.author %> </p>
-  <p>Seller: <%= book.seller.name %> </p>
-  <hr>
+<div class="container d-flex flex-wrap justify-content-center">
+  <% @books.each do |book| %>
+  <div class="card mb-3 mx-2 book-card" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img class="img-fluid rounded-start book-cover" src="https://images.pexels.com/photos/256450/pexels-photo-256450.jpeg" alt="">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= book.title %></h5>
+        <p class="card-text"> <%= h truncate(book.description, :length => 80) %> </p>
+        <p class="card-text"><small class="text-muted"> Price: <%= book.price %> </small></p>
+        <%= link_to "More information", "books/#{book.id}" %>
+      </div>
+    </div>
   </div>
-<% end %>
+  </div>
+  <% end %>
+</div>

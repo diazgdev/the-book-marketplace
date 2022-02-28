@@ -5,27 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <% if seller_signed_in? %>
-        <%= link_to 'Sign Out as Seller', destroy_seller_session_path, method: :delete %> |
-      <% elsif !buyer_signed_in? %>
-        <%= link_to "Sign In as Seller", new_seller_session_path %> |
-    <% end %>
-
-    <% if buyer_signed_in? %>
-       <%= link_to 'Sign Out as Buyer', destroy_buyer_session_path, method: :delete %> |
-      <% elsif !seller_signed_in? %>
-        <%= link_to "Sign In as Buyer", new_buyer_session_path %> |
-    <% end %>
-
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
     <%= yield %>
   </body>
 </html>
