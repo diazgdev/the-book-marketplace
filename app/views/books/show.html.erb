@@ -9,6 +9,11 @@
       <p class="card-text book-description"> <%= @book.description %> </p>
       <h3 class="card-title book-price"> <strong>Price:</strong> <%= @book.price %> </h3>
       <p class="card-text book-seller"> <strong>Seller:</strong> <%= @book.seller.name %> </p>
+      <%= form_for @order_item, remote: true do |f| %>
+        <%= f.hidden_field :book_id, :value => @book.id %>
+        <%= f.hidden_field :quantity, :value => 1 %>
+        <%= f.submit "Add to Cart" %>
+      <% end %>
     </div>
   </div>
 </div>

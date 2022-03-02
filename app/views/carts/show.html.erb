@@ -1,0 +1,12 @@
+<h1>Carts#show</h1>
+<p>Find me in app/views/carts/show.html.erb</p>
+
+
+<% @order_items.each do |item| %>
+  <%= item.book.title %>
+  Price: <%= item.book.price %>
+  Seller: <%= item.book.seller.name %>
+  <hr>
+<% end %>
+
+Total Price: <%= %>

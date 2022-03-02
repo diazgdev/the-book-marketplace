@@ -23,16 +23,20 @@
           <td><%= book.price %></td>
           <td><%= book.seller.name %></td>
           <td><%= link_to 'More information', book %></td>
-          <!--
-          <td><%= link_to 'Edit', edit_book_path(book) %></td>
-          <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          -->
+          <td><%= form_for @order_item, remote: true do |f| %>
+                <%= f.hidden_field :book_id, :value => book.id %>
+                <%= f.hidden_field :quantity, :value => 1 %>
+                <%= f.submit "Add to Cart" %>
+              <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
   <br>
+  <div id="cart">
+    <%= render 'carts/cart' %>
+  </div>
 
-  <%= link_to 'New Book', new_book_path %>
 </div>
