@@ -3,7 +3,7 @@ class OrderItem < ApplicationRecord
   belongs_to :book
 
   def total
-    book.price
+    order_item.book.price * order_item.quantity
   end
 
   private
