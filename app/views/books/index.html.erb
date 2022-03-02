@@ -20,7 +20,7 @@
           <td><%= book.title %></td>
           <td><%= book.description %></td>
           <td><%= book.author %></td>
-          <td><%= book.price %></td>
+          <td><%= number_to_currency(book.price) %></td>
           <td><%= book.seller.name %></td>
           <td><%= link_to 'More information', book %></td>
           <td><%= form_for @order_item, remote: true do |f| %>

@@ -7,7 +7,7 @@
       <h2 class="card-title book-title"><%= @book.title %></h2>
       <p class="card-text book-author"> <strong>Author:</strong> <%= @book.author %> </p>
       <p class="card-text book-description"> <%= @book.description %> </p>
-      <h3 class="card-title book-price"> <strong>Price:</strong> <%= @book.price %> </h3>
+      <h3 class="card-title book-price"> <strong>Price:</strong> <%= number_to_currency(@book.price) %> </h3>
       <p class="card-text book-seller"> <strong>Seller:</strong> <%= @book.seller.name %> </p>
       <%= form_for @order_item, remote: true do |f| %>
         <%= f.hidden_field :book_id, :value => @book.id %>
