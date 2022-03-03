@@ -1,7 +1,7 @@
 $('#cart').html("<%= escape_javascript(render('carts/cart')) %>")
 $('#cart-item').html("<%= escape_javascript(render('carts/carts-item')) %>")
 
-$('.deleteFromCart').bind('ajax:success', function() {
+$('.removeItem').bind('ajax:success', function() {
     $(this).closest('tr').fadeOut();
 })
 

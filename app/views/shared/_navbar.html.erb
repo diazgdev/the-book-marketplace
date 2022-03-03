@@ -37,6 +37,11 @@
           <%= link_to 'Sell a Book', new_book_path, class: "nav-link" %>
         </li>
         <% end %>
+        <li class="nav-item">
+        <% if buyer_signed_in? %>
+          <%= link_to 'Books List', books_path, class: "nav-link" %>
+        </li>
+        <% end %>
       </ul>
           <%= form_tag books_path, method: :get, class: "d-flex" do %>
             <%= text_field_tag :query,

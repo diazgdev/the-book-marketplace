@@ -1,4 +1,6 @@
 class OrderItem < ApplicationRecord
+  validates :book_id, uniqueness: { scope: :order_id }
+
   belongs_to :order
   belongs_to :book
 
