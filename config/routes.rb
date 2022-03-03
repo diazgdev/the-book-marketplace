@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'carts/show'
   resources :books
+  resources :order_items
+  resource :carts, only:[:show]
+
   namespace :buyers do
     get 'dashboard/index'
   end

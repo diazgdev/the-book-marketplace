@@ -1,17 +1,22 @@
-<p class="text-end mt-3">
-  <% if seller_signed_in? %>
-    <%= link_to 'My Seller Profile', sellers_authenticated_root_path %>
-    <%= link_to 'Sign Out', destroy_seller_session_path, method: :delete, class: "mx-2"  %>
-  <% elsif !buyer_signed_in? %>
-    <%= link_to "Log In as a Seller", new_seller_session_path, class: "mx-2" %> |
-  <% end %>
+<div class="d-flex justify-content-end">
+  <p class="text-end mt-3">
+    <% if seller_signed_in? %>
+      <%= link_to 'My Seller Profile', sellers_authenticated_root_path %>
+      <%= link_to 'Sign Out', destroy_seller_session_path, method: :delete, class: "mx-2"  %>
+    <% elsif !buyer_signed_in? %>
+      <%= link_to "Log In as a Seller", new_seller_session_path, class: "mx-2" %> |
+    <% end %>
 
-  <% if buyer_signed_in? %>
-    <%= link_to 'Sign Out as Buyer', destroy_buyer_session_path, method: :delete, class: "mx-2" %> |
-  <% elsif !seller_signed_in? %>
-    <%= link_to "Log In as a Buyer", new_buyer_session_path, class: "mx-2" %>
-  <% end %>
-</p>
+    <% if buyer_signed_in? %>
+      <div id="cart" class="d-inline">
+        <%= render 'carts/cart' %>
+      </div>
+      <%= link_to 'Sign Out as Buyer', destroy_buyer_session_path, method: :delete, class: "mx-2" %>
+    <% elsif !seller_signed_in? %>
+      <%= link_to "Log In as a Buyer", new_buyer_session_path, class: "mx-2" %>
+    <% end %>
+  </p>
+</div>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
   <div class="container-fluid">
@@ -30,6 +35,11 @@
         <li class="nav-item">
         <% if seller_signed_in? %>
           <%= link_to 'Sell a Book', new_book_path, class: "nav-link" %>
+        </li>
+        <% end %>
+        <li class="nav-item">
+        <% if buyer_signed_in? %>
+          <%= link_to 'Books List', books_path, class: "nav-link" %>
         </li>
         <% end %>
       </ul>

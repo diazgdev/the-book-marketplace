@@ -8,9 +8,11 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
+    @order_item = current_order.order_items.new
   end
 
   def show
+    @order_item = current_order.order_items.new
   end
 
   def new

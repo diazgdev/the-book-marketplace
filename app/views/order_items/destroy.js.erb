@@ -1,0 +1,8 @@
+$('#cart').html("<%= escape_javascript(render('carts/cart')) %>")
+$('#cart-item').html("<%= escape_javascript(render('carts/carts-item')) %>")
+
+$('.removeItem').bind('ajax:success', function() {
+    $(this).closest('tr').fadeOut();
+})
+
+$('#total').html("<%= (number_to_currency(current_order.total)) %>")
