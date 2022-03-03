@@ -22,7 +22,9 @@
         <%= form_for @order_item, remote: true do |f| %>
           <%= f.hidden_field :book_id, :value => book.id %>
           <%= f.hidden_field :quantity, :value => 1 %>
-          <%= f.submit "Add to Cart", id:"bot-#{book.id}" %>
+          <% if buyer_signed_in? %>
+            <%= f.submit "Add to Cart", id:"bot-#{book.id}" %>
+          <% end %>
         <% end %>
       </div>
     </div>
