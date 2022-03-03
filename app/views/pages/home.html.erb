@@ -1,0 +1,32 @@
+<div class="hero">
+  <h1>What Book Are You Looking For?</h1>
+</div>
+
+<div class="container trending-books my-5 py-4 rounded-3 ">
+  <h2>Top Trending Books</h2>
+</div>
+
+<div class="container d-flex flex-wrap justify-content-center">
+  <% @books.each do |book| %>
+  <div class="card mb-3 mx-2 book-card" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img class="img-fluid rounded-start book-cover" src="https://images.pexels.com/photos/256450/pexels-photo-256450.jpeg" alt="">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= book.title %></h5>
+        <p class="card-text"> <%= h truncate(book.description, :length => 80) %> </p>
+        <p class="card-text"><small class="text-muted"> Price: <%= number_to_currency(book.price) %> </small></p>
+        <%= link_to "More information", "books/#{book.id}" %>
+        <%= form_for @order_item, remote: true do |f| %>
+          <%= f.hidden_field :book_id, :value => book.id %>
+          <%= f.hidden_field :quantity, :value => 1 %>
+          <%= f.submit "Add to Cart", id:"bot-#{book.id}" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% end %>
+</div>
