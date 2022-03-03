@@ -1,24 +1,25 @@
-# README
+# The Book Marketplace
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Book Marketplace created using Ruby on Rails (Work In Progress)
 
-Things you may want to cover:
+## Description
 
-* Ruby version
+On this Marketplace, users are able to list and sell books.
+Buyers are able to search for their favorite book and add it to their shopping cart.
 
-* System dependencies
+## Live Demo
 
-* Configuration
+[The Book Marketplace @ Heroku](https://the-book-marketplace.herokuapp.com/)
 
-* Database creation
+## Authors
 
-* Database initialization
+Guillermo Díaz
+[@diazgdev](https://twitter.com/diazgdev)
 
-* How to run the test suite
+## Version History
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 1.0.0
+    * Buyers and Sellers are able to login and register
+    * Sellers can offer new books and set a price
+    * Buyers can search for the book they want or see a list of available books
+    * Buyers can add the books to their shopping cart and see their total price
